@@ -33,6 +33,10 @@ class TurtleBot3Node(Node):
         self.pose_subscription = self.create_subscription(
             json, "/turtle1/pose", self.pose_callback, 10
         )
+        # Create subscribers
+        self.pose_subscription = self.create_publisher(
+            json, "/turtle1/pose", self.pose_callback, 10
+        )
 
         # Create timers for publishers
         self.cmd_vel_timer = self.create_timer(0.1, self.publish_cmd_vel)
