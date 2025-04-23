@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import json
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist, Pose
@@ -31,7 +31,7 @@ class TurtleBot3Node(Node):
 
         # Create subscribers
         self.pose_subscription = self.create_subscription(
-            Pose, "/turtle1/pose", self.pose_callback, 10
+            json, "/turtle1/pose", self.pose_callback, 10
         )
 
         # Create timers for publishers
