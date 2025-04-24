@@ -23,18 +23,17 @@ class TurtleBot3Node(Node):
     def __init__(self):
         super().__init__("turtlebot3_test_node")
 
-        # Create publishers
+        # Create subscribers
         self.cmd_vel_publisher = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
-        self.laser_publisher = self.create_publisher(
-            LaserScan, "/robot_description", 10
+        self.subscription = self.create_subscription(
+            LaserScan,
+            '/scan',
+            self.listener_callback,
+            10
         )
 
-        # Create subscribers
-        self.pose_subscription = self.create_subscription(
-            json, "/turtle1/pose", self.pose_callback, 10
-        )
-        # Create subscribers
-        self.pose_subscription = self.create_publisher(
+        # Create publishers
+        self.pose_publisher = self.create_publisher(
             json, "/turtle1/pose", self.pose_callback, 10
         )
 
