@@ -34,7 +34,7 @@ class TurtleBot3Node(Node):
 
         # Create publishers
         self.pose_publisher = self.create_publisher(
-            json, "/turtle1/pose", self.pose_callback, 10
+            Pose, "/turtle1/pose", self.pose_callback, 10
         )
 
         # Create timers for publishers
